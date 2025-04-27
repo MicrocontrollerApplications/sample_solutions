@@ -10,29 +10,39 @@
 
 #include <LCD/GLCD_library.h>
 
-// _XTAL_FREQ is required for __delay_ms and provides Fosc in ticks per second
-#define MILLION 1000UL * 1000
-#define _XTAL_FREQ 4*MILLION
-
 void __init(void);
 void __interrupt(high_priority) __isr(void);
 uint16_t ADRES_to_mV(uint16_t register_val){
+    // calculate measured voltage from register_val
     return (uint16_t) 3250*(register_val/1023.0);
 }
+
 void main(void) {
     __init();
 
     while (1) {
+        /*
+         * ADC Conversion - Step 3: Start conversion
+         */
         ADCON0bits.GO = 1;
+
+        /*
+         * ADC Conversion - Step 4: Wait for conversion to complete by polling the GO/DONE bit
+         */
         while(ADCON0bits.NOT_DONE){
             Nop();
         }
-        // update display
+
+        /*
+         * ADC Conversion - Step 5: Read ADC result (and write it to display)
+         */
         GLCD_Value2Out_00(1, 1, ADRES_to_mV(ADRES), 4);
         
-        // delay next conversion to not unnecessary oft update display
-        // can you determine the update frequency with and without this delay?
-        __delay_ms(150);
+
+        // waste some time to not update the display to often
+        for (unsigned int ii = 0; ii < 10000; ++ii)
+            Nop();
+
     }
 
     return;

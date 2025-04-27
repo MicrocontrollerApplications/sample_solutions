@@ -10,13 +10,10 @@
 
 #include <LCD/GLCD_library.h>
 
-// _XTAL_FREQ is required for __delay_ms and provides Fosc in ticks per second
-#define MILLION 1000UL * 1000
-#define _XTAL_FREQ 4*MILLION
-
 void __init(void);
 void __interrupt(high_priority) __isr(void);
 uint16_t ADRES_to_mV(uint16_t register_val){
+    // calculate measured voltage from register_val
     return (uint16_t) 3250*(register_val/1023.0);
 }
 
@@ -29,6 +26,8 @@ void main(void) {
         if(local_ADRES){
             // update display
             GLCD_Value2Out_00(1, 1, ADRES_to_mV(local_ADRES), 4);
+            local_ADRES = 0;
+            LATBbits.LATB5 ^= 1;
         }
     }
 
@@ -39,7 +38,11 @@ void __init(void) {
     OSCCONbits.IRCF = 5; // Fosc = ?
     GLCD_Init();
     GLCD_Text2Out(1, 1, "    mV");
-    
+
+    ANSELB = 0;
+    TRISB &= 0b11000011;
+    LATB  |= 0b00111100;
+
     /*
      * ADC Conversion - Step 1: Configure Port
      */

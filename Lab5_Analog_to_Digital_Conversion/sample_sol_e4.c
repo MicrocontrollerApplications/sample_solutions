@@ -17,6 +17,25 @@ uint16_t ADRES_to_mV(uint16_t register_val) {
     return (uint16_t) 3250 * (register_val / 1023.0);
 }
 
+uint16_t previous_adc_val = 0;
+/**
+ * Check wether voltage increased or decreased. 
+ * According to that return 1 for increase (clockwise turn), 
+ * -1 for decrease (counter clockwise turn), 0 else.
+ * @param register_val register value of ADRES
+ * @return direction; 1 for clockwise, -1 for counter clockwise, 0 else
+ */
+int8_t get_direction_from_ADC(unsigned int register_val);
+
+/**
+ * rotate LEDs depending on detected direction. For clockwise turn toggle the
+ * LED to the right of the current LED, otherwise toggle the left one. In case
+ * of no change, do nothing.
+ * @param direction detected direction of Potentiometer turn.
+ *          1 for clockwise, -1 for counter clockwise, 0 else
+ */
+void rotate_leds(int8_t direction);
+
 static uint8_t local_ADRES = 0;
 
 void main(void) {
@@ -26,10 +45,8 @@ void main(void) {
         if (local_ADRES) {
             // update display
             GLCD_Value2Out_00(1, 1, ADRES_to_mV(local_ADRES), 4);
-            LATBbits.LATB2 = ~local_ADRES >> 7;
-            LATBbits.LATB3 = ~local_ADRES >> 6 & 0x01;
-            LATBbits.LATB4 = ~local_ADRES >> 5 & 0x01;
-            LATBbits.LATB5 = ~local_ADRES >> 4 & 0x01;
+            rotate_leds(get_direction_from_ADC(local_ADRES));
+            previous_adc_val = local_ADRES;            
         }
     }
 
@@ -109,4 +126,54 @@ void __interrupt(high_priority) __isr(void) {
     while (1) {
         Nop();
     }
+}
+
+int8_t get_direction_from_ADC(unsigned int register_val) {
+    int8_t direction = 0;
+    // no rotation
+    if (previous_adc_val == register_val)
+        return direction;
+
+    // rotation clockwise
+    if (previous_adc_val < register_val)
+        direction = 1;
+        // rotation counterclockwise
+    else
+        direction = -1;
+
+    return direction;
+}
+
+void rotate_leds(int8_t direction) {
+    // early return in case no rotation is needed
+    if (direction == 0)
+        return;
+
+    uint8_t current_state = PORTB & 0b00111100;
+    // all LEDs off
+    if (0b00111100 == current_state) {
+        if (direction > 0) {
+            // LED1 on
+            LATB = 0b00111000;
+        } else {
+            // LED4 on
+            LATB = 0b00011100;
+        }
+        // return function as no further actions are needed
+        return;
+    }
+    // invert LED bits
+    current_state ^= 0b00111100;
+
+    // rotate LED to the right
+    if (direction == 1) {
+        current_state <<= 1;
+    } else {
+        current_state >>= 1;
+    }
+
+    // invert LED bits
+    current_state ^= 0b00111100;
+    LATB = current_state;
+
 }

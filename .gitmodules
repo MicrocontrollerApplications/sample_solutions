@@ -18,3 +18,7 @@
 	path = Lab5_Analog_to_Digital_Conversion/instructions
 	url = git@github.com:MicrocontrollerApplications/Lab5_Analog_to_Digital_Conversion.git
 	branch = master
+[submodule "Lab6_Serial_Communication/instructions"]
+	path = Lab6_Serial_Communication/instructions
+	url = git@GitHubWork:MicrocontrollerApplications/Lab6_Serial_Communication.git
+	branch = master

@@ -22,3 +22,6 @@
 	path = Lab6_Serial_Communication/instructions
 	url = git@GitHubWork:MicrocontrollerApplications/Lab6_Serial_Communication.git
 	branch = master
+[submodule "Lab7_Project_Setup_and_Debugging/instructions"]
+	path = Lab7_Project_Setup_and_Debugging/instructions
+	url = git@GitHubWork:MicrocontrollerApplications/Lab7_Project_Setup_and_Debugging.git

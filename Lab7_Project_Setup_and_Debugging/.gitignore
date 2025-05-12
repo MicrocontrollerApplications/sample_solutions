@@ -1,0 +1,10 @@
+Lab7_Project_Setup_and_Debugging.X/debug/
+Lab7_Project_Setup_and_Debugging.X/build/
+Lab7_Project_Setup_and_Debugging.X/dist/
+Lab7_Project_Setup_and_Debugging.X/nbproject/*
+!Lab7_Project_Setup_and_Debugging.X/nbproject/configurations.xml
+!Lab7_Project_Setup_and_Debugging.X/nbproject/project.xml
+
+*.log*
+/Lab7_Project_Setup_and_Debugging.X/build/
+/Lab7_Project_Setup_and_Debugging.X/dist/

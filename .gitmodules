@@ -25,3 +25,6 @@
 [submodule "Lab7_Project_Setup_and_Debugging/instructions"]
 	path = Lab7_Project_Setup_and_Debugging/instructions
 	url = git@GitHubWork:MicrocontrollerApplications/Lab7_Project_Setup_and_Debugging.git
+[submodule "Lab8_Rotary_Encoder/instructions"]
+	path = Lab8_Rotary_Encoder/instructions
+	url = git@GitHubWork:MicrocontrollerApplications/Lab8_Rotary_Encoder.git

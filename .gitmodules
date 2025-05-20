@@ -1,30 +1,32 @@
 [submodule "Lab1_HelloWorld/instructions"]
 	path = Lab1_HelloWorld/instructions
 	url = git@github.com:MicrocontrollerApplications/Lab1_HelloWorld.git
-	branch = master
+	branch = main
 [submodule "Lab2_InputOutput/instructions"]
 	path = Lab2_InputOutput/instructions
 	url = git@github.com:MicrocontrollerApplications/Lab2_InputOutput.git
-	branch = master
+	branch = main
 [submodule "Lab3_Timers/instructions"]
 	path = Lab3_Timers/instructions
 	url = git@github.com:MicrocontrollerApplications/Lab3_Timers.git
-	branch = master
+	branch = main
 [submodule "Lab4_Interrupts/instructions"]
 	path = Lab4_Interrupts/instructions
 	url = git@github.com:MicrocontrollerApplications/Lab4_Interrupts.git
-	branch = master
+	branch = main
 [submodule "Lab5_Analog_to_Digital_Conversion/instructions"]
 	path = Lab5_Analog_to_Digital_Conversion/instructions
 	url = git@github.com:MicrocontrollerApplications/Lab5_Analog_to_Digital_Conversion.git
-	branch = master
+	branch = main
 [submodule "Lab6_Serial_Communication/instructions"]
 	path = Lab6_Serial_Communication/instructions
 	url = git@GitHubWork:MicrocontrollerApplications/Lab6_Serial_Communication.git
-	branch = master
+	branch = main
 [submodule "Lab7_Project_Setup_and_Debugging/instructions"]
 	path = Lab7_Project_Setup_and_Debugging/instructions
 	url = git@GitHubWork:MicrocontrollerApplications/Lab7_Project_Setup_and_Debugging.git
+	branch = main
 [submodule "Lab8_Rotary_Encoder/instructions"]
 	path = Lab8_Rotary_Encoder/instructions
 	url = git@GitHubWork:MicrocontrollerApplications/Lab8_Rotary_Encoder.git
+	branch = main

@@ -42,13 +42,13 @@ void __init(void) {
 void GLCD_Bit_Banging(unsigned char data)
 {
     GLCD_nCS = 0;
-    GLCD_CLK = 0; GLCD_DATA = data >> 7 & 0x01; GLCD_DLY(); GLCD_CLK = 1; GLCD_DLY();
-    GLCD_CLK = 0; GLCD_DATA = data >> 6 & 0x01; GLCD_DLY(); GLCD_CLK = 1; GLCD_DLY();
-    GLCD_CLK = 0; GLCD_DATA = data >> 5 & 0x01; GLCD_DLY(); GLCD_CLK = 1; GLCD_DLY();
-    GLCD_CLK = 0; GLCD_DATA = data >> 4 & 0x01; GLCD_DLY(); GLCD_CLK = 1; GLCD_DLY();
-    GLCD_CLK = 0; GLCD_DATA = data >> 3 & 0x01; GLCD_DLY(); GLCD_CLK = 1; GLCD_DLY();
-    GLCD_CLK = 0; GLCD_DATA = data >> 2 & 0x01; GLCD_DLY(); GLCD_CLK = 1; GLCD_DLY();
-    GLCD_CLK = 0; GLCD_DATA = data >> 1 & 0x01; GLCD_DLY(); GLCD_CLK = 1; GLCD_DLY();
-    GLCD_CLK = 0; GLCD_DATA = data & 0x01;      GLCD_DLY(); GLCD_CLK = 1; GLCD_DLY();
+    GLCD_CLK = 0; GLCD_DATA = data >> 7 & 0x01; GLCD_CLK = 1;
+    GLCD_CLK = 0; GLCD_DATA = data >> 6 & 0x01; GLCD_CLK = 1;
+    GLCD_CLK = 0; GLCD_DATA = data >> 5 & 0x01; GLCD_CLK = 1;
+    GLCD_CLK = 0; GLCD_DATA = data >> 4 & 0x01; GLCD_CLK = 1;
+    GLCD_CLK = 0; GLCD_DATA = data >> 3 & 0x01; GLCD_CLK = 1;
+    GLCD_CLK = 0; GLCD_DATA = data >> 2 & 0x01; GLCD_CLK = 1;
+    GLCD_CLK = 0; GLCD_DATA = data >> 1 & 0x01; GLCD_CLK = 1;
+    GLCD_CLK = 0; GLCD_DATA = data & 0x01;      GLCD_CLK = 1;
     GLCD_nCS = 1;
 }

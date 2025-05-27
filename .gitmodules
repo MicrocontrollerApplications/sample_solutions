@@ -30,3 +30,6 @@
 	path = Lab8_Bit_Banging/instructions
 	url = git@GitHubWork:MicrocontrollerApplications/Lab8_Rotary_Encoder.git
 	branch = main
+[submodule "Lab9_Space_Invaders/instructions"]
+	path = Lab9_Space_Invaders/instructions
+	url = git@GitHubWork:MicrocontrollerApplications/Lab9_Space_Invaders.git

@@ -26,9 +26,9 @@
 	path = Lab7_Project_Setup_and_Debugging/instructions
 	url = git@GitHubWork:MicrocontrollerApplications/Lab7_Project_Setup_and_Debugging.git
 	branch = main
-[submodule "Lab8_Rotary_Encoder/instructions"]
+[submodule "Lab8_Bit_Banging/instructions"]
 	path = Lab8_Bit_Banging/instructions
-	url = git@GitHubWork:MicrocontrollerApplications/Lab8_Rotary_Encoder.git
+	url = git@GitHubWork:MicrocontrollerApplications/Lab8_BitBanging.git
 	branch = main
 [submodule "Lab9_Space_Invaders/instructions"]
 	path = Lab9_Space_Invaders/instructions
